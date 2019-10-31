@@ -3,7 +3,9 @@ require "../config/database.php";
 require "../models/Db.php";
 require "../models/products.php";
 require "../models/manufactures.php";
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

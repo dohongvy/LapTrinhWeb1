@@ -3,6 +3,14 @@ session_start();
 require "./config/database.php";
 require "./models/Db.php";
 require "./models/user.php";
+
+$url_host = 'http://'.$_SERVER['HTTP_HOST'];
+  $pattern_document_root = addcslashes(realpath($_SERVER['DOCUMENT_ROOT']), '\\');
+  $pattern_uri = '/' . $pattern_document_root . '(.*)$/';
+  
+  preg_match_all($pattern_uri, __DIR__, $matches);
+  $url_path = $url_host . $matches[1][0];
+  $url_path = str_replace('\\', '/', $url_path);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +39,9 @@ require "./models/user.php";
             foreach($check as $key=>$value){
                 $_SESSION['type'] = $value['type'];
                 if($value['type'] == 1){
-                    header("Location: http://localhost:82/Nhom4/mobileadmin/");
+                    header("Location:$url_path/mobileadmin/");
                 }else{
-                    header("Location: http://localhost:82/Nhom4/home.php");
+                    header("Location: $url_path/home.php");
                 } 
         }
          }

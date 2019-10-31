@@ -1,6 +1,14 @@
 <?php
 session_start();
 
+$url_host = 'http://'.$_SERVER['HTTP_HOST'];
+  $pattern_document_root = addcslashes(realpath($_SERVER['DOCUMENT_ROOT']), '\\');
+  $pattern_uri = '/' . $pattern_document_root . '(.*)$/';
+  
+  preg_match_all($pattern_uri, __DIR__, $matches);
+  $url_path = $url_host . $matches[1][0];
+  $url_path = str_replace('\\', '/', $url_path);
+
 $k =$_GET['key'];
 var_dump($_SESSION['cart'][$k]['qty']);
 
@@ -28,4 +36,4 @@ if(isset($_POST['next'])) {
 if(isset($_POST['mua'])) {
     
 }
-header("Location: http://localhost:82/Nhom4/cart.php");
+header("Location: $url_path/cart.php");

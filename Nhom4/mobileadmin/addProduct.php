@@ -1,12 +1,18 @@
 <?php
+  $url_host = 'http://'.$_SERVER['HTTP_HOST'];
+  $pattern_document_root = addcslashes(realpath($_SERVER['DOCUMENT_ROOT']), '\\');
+  $pattern_uri = '/' . $pattern_document_root . '(.*)$/';
+  
+  preg_match_all($pattern_uri, __DIR__, $matches);
+  $url_path = $url_host . $matches[1][0];
+  $url_path = str_replace('\\', '/', $url_path);
+
 require "../config/database.php";
 require "../models/Db.php";
 require "../models/products.php";
 
 $products = new Products;
-$id = $_GET['id'];
-echo $id;
-die();
+
 $image = $_FILES["fileUpload"]["name"];
 $type_id = $_POST['type_id'];
 $manu_id = $_POST['manu_id'];
@@ -17,7 +23,7 @@ if(isset($_POST['add'])) {
     if(isset($_POST['name'])){
         move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file);
         $products->addNewProduct($_POST['name'], $_POST['price'], $image, $_POST['description'], $type_id, $manu_id);
-        header("Location: http://localhost:82/Nhom4/mobileadmin/index.php");
+        header("Location: $url_path/index.php");
     }
 }
 
