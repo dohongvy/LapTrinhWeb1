@@ -24,12 +24,6 @@ require "./models/products.php";
         $id = $_GET['id'];
         $products = new Products;
         $getProductById = $products->getProductById($id);
-    
-
-        // echo "<pre/>";
-        //var_dump($getProductById);
-        //var_dump($getProductById[0]['name']);
-        //die();
         if($getProductById){
             if(isset($_SESSION['cart']))
             {
