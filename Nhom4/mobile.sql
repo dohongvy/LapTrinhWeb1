@@ -80,11 +80,11 @@ CREATE TABLE `manufactures` (
 --
 
 INSERT INTO `manufactures` (`manu_ID`, `manu_name`, `manu_img`) VALUES
-(1, 'Apple', 'Iphone1.pjg'),
-(2, 'SamSung', 'j7.jpg'),
-(3, 'Sony', 'experia.jpg'),
-(4, 'Nokia', 'E72.jpg'),
-(5, 'blackberry', 'br.jpg');
+(1, 'Apple', 'Iphonelogo.pjg'),
+(2, 'SamSung', 'SamSunglogo.jpg'),
+(3, 'Sony', 'exlogo.jpg'),
+(4, 'Nokia', 'nokialogo.jpg'),
+(5, 'blackberry', 'brlogo.jpg');
 
 -- --------------------------------------------------------
 
@@ -143,11 +143,11 @@ CREATE TABLE `protypes` (
 --
 
 INSERT INTO `protypes` (`type_ID`, `type_name`, `type_img`) VALUES
-(1, 'Phone ', '1'),
-(2, 'Headphone', '2'),
-(3, 'Laptop', '3'),
-(4, 'Tablet', '4'),
-(5, 'Smart watch', '5');
+(1, 'Phone ', 'phone.jpg'),
+(2, 'Headphone', 'headphone.jpg'),
+(3, 'Laptop', 'laptop.jpg'),
+(4, 'Tablet', 'table.jpg'),
+(5, 'Smart watch', 'sm.jpg');
 
 -- --------------------------------------------------------
 
