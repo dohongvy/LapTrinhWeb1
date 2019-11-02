@@ -1,7 +1,11 @@
 <?php
 require "header.php";
 require "./models/comments.php";
-?>
+if( isset( $_SESSION['session1'] ) )
+{
+    if( $_SESSION['type'] == 1){
+    ?>
+
 <!--content-->
 <div class="content">
     <h1>New Collections</h1>
@@ -84,4 +88,25 @@ foreach($getCommentById as $key=>$value){
 </table>
 <?php
 require "footer.php";
+?>
+    <?php
+    }
+    else{
+        ?>
+    <script>
+        alert("Bạn không có quyền vào trang này!!");
+    </script>
+    <?php
+    }
+}
+else{
+    ?>
+    <script>
+        alert("Bạn chưa đăng nhập!!");
+        <?php
+        header("Location: localhost:82/LapTrinhWeb1/Nhom4/login.php");
+        ?>
+    </script>
+    <?php
+}
 ?>
