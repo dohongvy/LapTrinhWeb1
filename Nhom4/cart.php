@@ -75,14 +75,14 @@ require "./models/products.php";
                 <td><?php echo $value['name'] ?></td>
                 <td><?php echo $value['price'] ?></td>
                 <td>
-                <form name="input" action="xl.php?key=<?php echo $key ?>" method="post">
+                <form name="input" action="xl.php?key=<?php echo $key ?>&n=<?php echo $n ?>" method="post">
                         <input type="submit" name="pve" value="<" />
                         <span id="quantity_<?php echo $key?>"><?php echo $value['qty'] ?></span>
                         <input type="submit" name="next" value=">" />
                     </form>
                 </td>
                 <td>
-                    <form name="input" action="xl.php?key=<?php echo $key ?>" method="post">
+                    <form name="input" action="xl.php?key=<?php echo $key ?>&n=<?php echo $n ?>" method="post">
                         <input type="submit" name="remove" value="Xóa" />
                     </form>
                 </td>
@@ -97,8 +97,8 @@ require "./models/products.php";
     }
     ?>
     <h2>Tổng tiền: <span id="totalPrice"><?php echo $tongTien ?></span></h2>
-    <form name="input" action="xl.php?key=<?php echo $key ?>" method="post">
-                        <input type="submit" name="mua" value="Mua" />
+    <form name="input" action="xl.php?key=<?php echo $key ?>&n=<?php echo $n ?>" method="post">
+                        <button type="submit" name="mua" >Mua</button>
                     </form>
     <?php
     $_SESSION['tien'] = $tongTien;
@@ -145,7 +145,7 @@ if(!isset($_SESSION['cart'])){
 
             $('#totalPrice').text(totalPrice);
         }
-        window.history.replaceState({}, document.title, "/" + "Nhom4/cart.php");
+        window.history.replaceState({}, document.title, "/" + "LapTrinhWeb1/Nhom4/cart.php");
     </script>
 </body>
 

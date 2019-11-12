@@ -96,8 +96,10 @@ require "../models/manufactures.php";
 			<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 			<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
 			<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
+			<li> <a href="add_manufactures.php"><i class="icon icon-th-list"></i> <span>Add Manufactures</span></a></li>
 			<li> <a href="user.php"><i class="icon icon-th-list"></i> <span>User</span></a></li>
 			<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protype</span></a></li>
+			<li> <a href="add_protype.php"><i class="icon icon-th-list"></i> <span>Add Protype</span></a></li>
 
 
 		</ul>
@@ -139,14 +141,14 @@ require "../models/manufactures.php";
 								<tbody>
 									<tr class="">
 										<td><img class="img-fluid" src='../public/images/<?php echo $value['image'] ?>'
-												alt=""></td>
+												alt=""style="height: 100px !important; width: 100px !important;"></td>
 										<td><?php echo $value['name'] ?></td>
 										<td><?php echo $value['type_name'] ?></td>
 										<td><?php echo $value['manu_name'] ?></td>
 										<td><?php echo substr($value['description'],0,50) ?></td>
 										<td><?php echo $value['price'] ?></td>
 										<td>
-											<a href="edit.php?id=<?php echo $value['ID'] ?>"
+											<a href="edit_product.php?id=<?php echo $value['ID'] ?>"
 												class="btn btn-success btn-mini">Edit</a>
 											<a href="delete.php?id=<?php echo $value['ID'] ?>"
 												class="btn btn-danger btn-mini">Delete</a>

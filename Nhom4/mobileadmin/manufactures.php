@@ -79,8 +79,10 @@ require "../models/manufactures.php";
 			<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 			<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
 			<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
+			<li> <a href="add_manufactures.php"><i class="icon icon-th-list"></i> <span>Add Manufactures</span></a></li>
 			<li> <a href="user.php"><i class="icon icon-th-list"></i> <span>User</span></a></li>
 			<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protype</span></a></li>
+			<li> <a href="add_protype.php"><i class="icon icon-th-list"></i> <span>Add Protype</span></a></li>
 
 
 		</ul>
@@ -121,9 +123,12 @@ require "../models/manufactures.php";
 										<td><?php echo $value['manu_ID'] ?></td>
 										<td><?php echo $value['manu_name'] ?></td>
 										<td><img class="img-fluid"
-												src='../public/images/<?php echo $value['manu_img'] ?>' alt=""></td>
+												src='../public/images/<?php echo $value['manu_img'] ?>' alt="" style="
+    height: 100px !important;
+    width: 100px !important;
+"></td>
 										<td>
-											<a href="edit_manu.php?id=<?php echo $value['manu_ID'] ?>"
+											<a href="edit_manufacture.php?id=<?php echo $value['manu_ID'] ?>"
 												class="btn btn-success btn-mini">Edit</a>
 											<a href="delete_manu.php?id=<?php echo $value['manu_ID'] ?>"
 												class="btn btn-danger btn-mini">Delete</a>

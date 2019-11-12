@@ -11,9 +11,9 @@ class User extends Db{
         and `password` =  '$password'");
         return $this->select($sql);
     }
-    public function register($username, $password)
+    public function register($username, $password, $last_name,$first_name)
     {
-        $sql = self::$connection->query("INSERT INTO `users`( `username`, `password`) VALUES ('$username','$password')");
+        $sql = self::$connection->query("INSERT INTO `users`( `username`, `password`,`last_name`,`first_name`) VALUES ('$username','$password','$last_name','$first_name')");
     }
     public function checkLogin($username)
     {
@@ -21,7 +21,7 @@ class User extends Db{
         return $this->select($sql);
     }
     public function getUser(){
-        $sql = self::$connection->prepare("SELECT `id`,`username`,`type` FROM `users` ORDER BY `id` DESC");
+        $sql = self::$connection->prepare("SELECT `id`,`username`,`type`,`last_name`,`first_name` FROM `users` ORDER BY `id` DESC");
         return $this->select($sql);
     }
 }

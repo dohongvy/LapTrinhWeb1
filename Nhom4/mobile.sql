@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 31, 2019 lúc 10:27 AM
+-- Thời gian đã tạo: Th10 12, 2019 lúc 02:34 AM
 -- Phiên bản máy phục vụ: 10.3.16-MariaDB
 -- Phiên bản PHP: 7.1.30
 
@@ -31,9 +31,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `id_cart` int(100) NOT NULL,
   `id_product` int(100) NOT NULL,
-  `id_user` int(100) NOT NULL,
+  `username` varchar(200) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
   `qty` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `id_product`, `username`, `qty`) VALUES
+(16, 17, 'trang', 3),
+(17, 18, 'trang', 1),
+(18, 18, 'trang', 1);
 
 -- --------------------------------------------------------
 
@@ -80,11 +89,12 @@ CREATE TABLE `manufactures` (
 --
 
 INSERT INTO `manufactures` (`manu_ID`, `manu_name`, `manu_img`) VALUES
-(1, 'Apple', 'Iphonelogo.pjg'),
+(1, 'Apple', 'Iphonelogo.jpg'),
 (2, 'SamSung', 'SamSunglogo.jpg'),
 (3, 'Sony', 'exlogo.jpg'),
 (4, 'Nokia', 'nokialogo.jpg'),
-(5, 'blackberry', 'brlogo.jpg');
+(5, 'Smart watch1111w', 'screenshot_myfirstreact.png'),
+(6, 'Vy', '201-screenshot.PNG');
 
 -- --------------------------------------------------------
 
@@ -120,11 +130,9 @@ INSERT INTO `products` (`ID`, `name`, `price`, `image`, `description`, `manu_ID`
 (12, 'Xperia Z5', 11000000, 'Xperiaz5.jpg', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 3, 1),
 (13, 'Sony Vaio i7', 11000000, 'sonyvaioi7.jpg', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 3, 3),
 (14, 'Xperia ZX', 11000000, 'xperiazx.jpg', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 3, 1),
-(15, 'Sony Vaio s', 11000000, 'sonyvaios.jpg', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 3, 3),
-(16, 'SamSung gear fit', 11000000, 'ssgearfit.jpg', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 2, 5),
-(17, 'Apple Warth seri 2', 11000000, 'applewarthsr2.jpg', 'mua ve deo khoe thien ha', 1, 5),
-(18, 'Blackbery key2', 11000000, 'bbkey2.jpg', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 5, 1),
-(19, 'Backbery keyone Sliver', 11000000, 'bbkeyonesv.jpg', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 5, 1);
+(17, 'Apple Warth seri 2 hihi', 11000000, '', 'mua ve deo khoe thien ha', 0, 0),
+(18, 'Blackbery key2', 11000000, '', 'iPad WiFi New 2018 vẫn giữ phong cách thiết kế quen thuộc như phiên bản tiền nhiệm 2017 với chất liệu nhôm nguyên khối cao cấp, các cạnh được bo cong mềm mại, tạo cảm giác cầm nắm thoải mái và chắc tay. Bên cạnh đó các chi tiết đều được gia công một cách tỉ mỉ và tinh tế, bạn sẽ phải \"Wow\" lên vì sức hút mãnh liệt từ vẻ đẹp bên ngoài của nó.', 0, 0),
+(19, 'Back123', 123, '201-screenshot.PNG', 's123', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -159,22 +167,26 @@ CREATE TABLE `users` (
   `id` int(250) NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
   `password` varchar(100) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
-  `type` int(10) NOT NULL
+  `type` int(10) NOT NULL,
+  `last_name` varchar(250) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `first_name` varchar(250) COLLATE utf8mb4_unicode_nopad_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `type`) VALUES
-(1, 'vy', '12345', 1),
-(2, 'cong', '12345', 0),
-(3, 'thang', '12345', 0),
-(4, 'trang', '12345', 0),
-(5, 'admin', '12345', 0),
-(9, 'vy12', '123', 0),
-(10, 'Trang12', '123', 0),
-(11, '17211TT4118', '1', 0);
+INSERT INTO `users` (`id`, `username`, `password`, `type`, `last_name`, `first_name`) VALUES
+(1, 'vy', '12345', 1, 'Vy', 'Đỗ Thị Hồng'),
+(2, 'cong', '12345', 0, 'Công', 'Lê  Xuân Công'),
+(3, 'thang', '12345', 0, 'Thắng', 'Lê Văn'),
+(4, 'trang', '12345', 0, 'Trang', 'Nguyễn Thị Thùy'),
+(5, 'admin', '12345', 0, 'min', 'ad'),
+(9, 'vy12', '123', 0, 'Vy', 'Trần Diễm'),
+(10, 'Trang12', '123', 0, 'Trang', 'Lê Thị'),
+(11, '17211TT4118', '1', 0, 'Hùng', 'Nguyễn Tấn'),
+(12, 'vy_test12', '12345', 0, 'Vy', 'Đỗ Hồng'),
+(13, 'vy21', '12345', 0, 'Vy', 'Đỗ');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -224,7 +236,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cart` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `comment`
@@ -236,7 +248,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT cho bảng `manufactures`
 --
 ALTER TABLE `manufactures`
-  MODIFY `manu_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `manu_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -248,13 +260,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT cho bảng `protypes`
 --
 ALTER TABLE `protypes`
-  MODIFY `type_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `type_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

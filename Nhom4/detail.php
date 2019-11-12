@@ -3,7 +3,7 @@ require "header.php";
 require "./models/comments.php";
 if( isset( $_SESSION['session1'] ) )
 {
-    if( $_SESSION['type'] == 1){
+    if( $_SESSION['type'] == 0){
     ?>
 
 <!--content-->

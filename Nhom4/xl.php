@@ -1,15 +1,11 @@
 <?php
 session_start();
-
-$url_host = 'http://'.$_SERVER['HTTP_HOST'];
-  $pattern_document_root = addcslashes(realpath($_SERVER['DOCUMENT_ROOT']), '\\');
-  $pattern_uri = '/' . $pattern_document_root . '(.*)$/';
-  
-  preg_match_all($pattern_uri, __DIR__, $matches);
-  $url_path = $url_host . $matches[1][0];
-  $url_path = str_replace('\\', '/', $url_path);
+require "./config/database.php";
+require "./models/Db.php";
+require "./models/cart.php";
 
 $k =$_GET['key'];
+$n =$_GET['n'];
 var_dump($_SESSION['cart'][$k]['qty']);
 
 
@@ -33,7 +29,13 @@ if(isset($_POST['next'])) {
     $_SESSION['cart'][$k]['qty'] = $_SESSION['cart'][$k]['qty'] + 1;
     $_SESSION["cart"] = array_values($_SESSION["cart"]);
 }
-if(isset($_POST['mua'])) {
-    
+if(isset($_POST['mua'])){
+    $cart = new Cart();
+    $n = $n -1;
+    for($i = 1; $i <= $n ; $i++){
+        $cart->addCart($_SESSION['session1'], $k, $_SESSION['cart'][$k]['qty']);
+        echo "Mua thành công!!!";
+    }
+   
 }
-header("Location: $url_path/cart.php");
+header("Location: http://localhost:82/LapTrinhWeb1/Nhom4/cart.php");

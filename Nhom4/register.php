@@ -17,6 +17,9 @@ require "./models/user.php";
     <form action="" method="post">
     Username:<input type="text" name="username"><br>
     Password: <input type="Password" name="password"><br>
+    Nhập lại Password: <input type="Password" name="password_re"><br>
+    Firt name: <input type="text" name="firt_name"><br>
+    Last name: <input type="text" name="last_name"><br>
     <input type="submit" name="register">
      </form>
      <?php
@@ -33,8 +36,14 @@ require "./models/user.php";
         if($i > 0){
             echo "<p class='text-danger'>Username đã bị trùng</p>";
         }else{
-            $user->register($_POST['username'], $_POST['password']);
-            echo "<p class='text-success'>Đăng kí thành công </br><a href='login.php'>Vui lòng đăng nhập lại</a> </p>";
+            if($_POST['password'] == $_POST['password_re']){
+                $user->register($_POST['username'], $_POST['password'], $_POST['last_name'], $_POST['firt_name']);
+                echo "<p class='text-success'>Đăng kí thành công </br><a href='login.php'>Vui lòng đăng nhập lại</a> </p>";
+            }
+            else{
+                echo "<p class='text-danger'>Mật khẩu không đúng</p>";
+            }
+            
         }
 
     }

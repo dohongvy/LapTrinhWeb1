@@ -1,3 +1,10 @@
+<?php
+require "../config/database.php";
+require "../models/Db.php";
+require "../models/products.php";
+require "../models/protypes.php";
+require "../models/manufactures.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,7 +93,7 @@
 		<div id="content-header">
 			<div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i>
 					Home</a></div>
-			<h1>Add New Product</h1>
+			<h1>Edit Product</h1>
 		</div>
 		<div class="container-fluid">
 			<hr>
@@ -99,67 +106,112 @@
 						<div class="widget-content nopadding">
 
 							<!-- BEGIN USER FORM -->
-							<form action="addProduct.php" method="post" class="form-horizontal"
+							<?php
+                    $id = $_GET['id'];
+                    $products = new Products;
+                    $getProductById = $products->getProductById($id);
+                    //var_dump($getProductById);
+                    foreach($getProductById as $key=>$value){
+               		 ?>
+							<form action="xl_editProduct.php?id=<?php echo $id ?>" method="post" class="form-horizontal"
 								enctype="multipart/form-data">
 								<div class="control-group">
 									<label class="control-label">Name :</label>
 									<div class="controls">
-										<input type="text" class="span11" placeholder="Product name" name="name" /> *
+										<input type="text" class="span11" value="<?php echo $value['name'] ?>"
+											name="name" />
 									</div>
 								</div>
+
+
 								<div class="control-group">
 									<label class="control-label">Choose a product type :</label>
 									<div class="controls">
-										<select name="type_id">
-											<option value="4">Speaker</option>
-											<option value="3">Laptop</option>
-											<option value="2">Tablet</option>
-											<option value="1">Cellphone</option>
 
-										</select> *
+										<select name="type_ID">
+											<option>Protype</option>
+											<?php 
+                            $type = new Protype();
+							$typelist = $type->getProtype();
+                            
+							foreach($typelist as $key=>$type){
+								?>
+											<option <?php 
+                            if($getProductById[0]['type_ID']==$type['type_ID'])
+                                { echo 'selected'; }
+                             ?> value=" <?php echo $type['type_ID'] ?> "> <?php echo $type['type_name'] ?></option>
+
+											<?php 
+                             }
+                             ?>
+										</select>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Choose a manufacture :</label>
 									<div class="controls">
-										<select name="manu_id">
-											<option value="5">Oppo</option>
-											<option value="4">SamSung</option>
-											<option value="3">Sony</option>
-											<option value="2">Microsoft</option>
-											<option value="1">Apple</option>
 
+										<select name="manu_id">
+											<option>Manufature</option>
+											<?php 
+                            $manu = new Manufacture();
+							$manulist = $manu->getAllManufacture_ManuName();
+							echo $manulist;
+							foreach($manulist as $key=>$manu){
+								?>
+											<option <?php 
+                            if($getProductById[0]['manu_ID']==$manu['manu_ID'])
+                                { echo 'selected'; }
+                             ?> value=" <?php echo $manu['manu_ID'] ?> "> <?php echo $manu['manu_name'] ?></option>
+
+											<?php 
+                             }
+                             ?>
 										</select> *
 									</div>
 									<div class="control-group">
-										<label class="control-label">Choose an image :</label>
-										<div class="controls">
-											<input type="file" name="fileUpload" id="fileUpload">
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Description</label>
-										<div class="controls">
-											<textarea class="span11" placeholder="Description"
-												name="description"></textarea>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Price :</label>
+
+										<form id="Form_upload" method="post" enctype="multipart/form-data">
+
+											<label class="control-label">Choose an image :</label>
+											<td><img class="img-fluid" src='public/images/<?php echo $value['image'] ?>'
+													alt=""></td>
 											<div class="controls">
-												<input type="text" class="span11" placeholder="price" name="price" /> *
+												<input type="file" name="fileToUpload" id="fileToUpload">
+												<?php $_FILES["fileToUpload"]["name"] = $value['image']?>
+												<img src="../public/images/<?php echo $value['image'] ?>"
+													width="100"><br>
+											</div>
+										</form>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Descriptphpion</label>
+
+										<div class="controls">
+											<textarea class="span11"
+												name="description"><?php echo $value['description']?></textarea>
+										</div>
+
+										<div class="control-group">
+
+											<label class="control-label">Price :</label>
+
+											<div class="controls">
+												<input type="text" class="span11" value="<?php echo $value['price']?>"
+													name="price" /> *
 											</div>
 
 										</div>
 
 										<div class="form-actions">
-											<button type="submit" name="add" class="btn btn-success">Add</button>
+											<button type="submit" name="edit" class="btn btn-success">Edit</button>
 										</div>
 									</div>
-
+									<?php } ?>
 							</form>
-							<!-- END USER FORM -->
-
-
 						</div>
 					</div>
 				</div>

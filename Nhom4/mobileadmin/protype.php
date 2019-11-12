@@ -79,8 +79,10 @@ require "../models/protypes.php";
 			<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 			<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
 			<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
+			<li> <a href="add_manufactures.php"><i class="icon icon-th-list"></i> <span>Add Manufactures</span></a></li>
 			<li> <a href="user.php"><i class="icon icon-th-list"></i> <span>User</span></a></li>
 			<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protype</span></a></li>
+			<li> <a href="add_protype.php"><i class="icon icon-th-list"></i> <span>Add Protype</span></a></li>
 
 
 		</ul>
@@ -107,6 +109,7 @@ require "../models/protypes.php";
 									<tr>
 										<th>Protype_Id</th>
 										<th>Protype_Name</th>
+										<th>Manu_image</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -119,10 +122,13 @@ require "../models/protypes.php";
 									<tr class="">
 										<td><?php echo $value['type_ID'] ?></td>
 										<td><?php echo $value['type_name'] ?></td>
+										<td><img class="img-fluid"
+												src='../public/images/<?php echo $value['type_img'] ?>' alt="" 
+												style="height: 100px !important;width: 100px !important;"></td>
 										<td>
-											<a href="edit_manu.php?id=<?php echo $value['manu_ID'] ?>"
+											<a href="edit_protype.php?id=<?php echo $value['type_ID'] ?>"
 												class="btn btn-success btn-mini">Edit</a>
-											<a href="delete_manu.php?id=<?php echo $value['manu_ID'] ?>"
+											<a href="delete_protype.php?id=<?php echo $value['type_ID'] ?>"
 												class="btn btn-danger btn-mini">Delete</a>
 										</td>
 									</tr>

@@ -79,8 +79,10 @@ require "../models/user.php";
 			<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 			<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
 			<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
+			<li> <a href="add_manufactures.php"><i class="icon icon-th-list"></i> <span>Add Manufactures</span></a></li>
 			<li> <a href="user.php"><i class="icon icon-th-list"></i> <span>User</span></a></li>
 			<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protype</span></a></li>
+			<li> <a href="add_protype.php"><i class="icon icon-th-list"></i> <span>Add Protype</span></a></li>
 
 
 		</ul>
@@ -107,6 +109,7 @@ require "../models/user.php";
 									<tr>
 										<th>ID</th>
 										<th>Username</th>
+										<th>Name</th>
 										<th>Type</th>
 										<th>Action</th>
 									</tr>
@@ -120,6 +123,7 @@ require "../models/user.php";
 									<tr class="">
 										<td><?php echo $value['id'] ?></td>
 										<td><?php echo $value['username'] ?></td>
+										<td><?php echo $value['first_name'] ." ". $value['last_name']?></td>
 										<td><?php echo $value['type'] ?></td>
 
 										<td>

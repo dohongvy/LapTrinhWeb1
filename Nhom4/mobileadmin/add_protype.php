@@ -86,7 +86,7 @@
 		<div id="content-header">
 			<div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i>
 					Home</a></div>
-			<h1>Add New Product</h1>
+			<h1>Add New Protype</h1>
 		</div>
 		<div class="container-fluid">
 			<hr>
@@ -99,57 +99,23 @@
 						<div class="widget-content nopadding">
 
 							<!-- BEGIN USER FORM -->
-							<form action="addProduct.php" method="post" class="form-horizontal"
+							<form action="xl_protype.php" method="post" class="form-horizontal"
 								enctype="multipart/form-data">
 								<div class="control-group">
-									<label class="control-label">Name :</label>
+									<label class="control-label">Protype name :</label>
 									<div class="controls">
 										<input type="text" class="span11" placeholder="Product name" name="name" /> *
 									</div>
 								</div>
-								<div class="control-group">
-									<label class="control-label">Choose a product type :</label>
-									<div class="controls">
-										<select name="type_id">
-											<option value="4">Speaker</option>
-											<option value="3">Laptop</option>
-											<option value="2">Tablet</option>
-											<option value="1">Cellphone</option>
-
-										</select> *
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">Choose a manufacture :</label>
-									<div class="controls">
-										<select name="manu_id">
-											<option value="5">Oppo</option>
-											<option value="4">SamSung</option>
-											<option value="3">Sony</option>
-											<option value="2">Microsoft</option>
-											<option value="1">Apple</option>
-
-										</select> *
-									</div>
+								
+								
 									<div class="control-group">
 										<label class="control-label">Choose an image :</label>
 										<div class="controls">
 											<input type="file" name="fileUpload" id="fileUpload">
 										</div>
 									</div>
-									<div class="control-group">
-										<label class="control-label">Description</label>
-										<div class="controls">
-											<textarea class="span11" placeholder="Description"
-												name="description"></textarea>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Price :</label>
-											<div class="controls">
-												<input type="text" class="span11" placeholder="price" name="price" /> *
-											</div>
-
-										</div>
+									
 
 										<div class="form-actions">
 											<button type="submit" name="add" class="btn btn-success">Add</button>
