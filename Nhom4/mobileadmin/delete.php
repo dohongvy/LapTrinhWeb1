@@ -12,6 +12,9 @@ preg_match_all($pattern_uri, __DIR__, $matches);
 $url_path = $url_host . $matches[1][0];
 $url_path = str_replace('\\', '/', $url_path);
 
+
+
+
     $id = $_GET['id'];
     $products = new Products;
     $delete = $products->delete($id);
