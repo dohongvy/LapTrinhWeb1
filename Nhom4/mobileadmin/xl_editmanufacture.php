@@ -2,7 +2,8 @@
 require "../config/database.php";
 require "../models/Db.php";
 require "../models/manufactures.php";
-
+session_start();
+if ($_SESSION['type'] == 1) {
 $url_host = 'http://'.$_SERVER['HTTP_HOST'];
 $pattern_document_root = addcslashes(realpath($_SERVER['DOCUMENT_ROOT']), '\\');
 $pattern_uri = '/' . $pattern_document_root . '(.*)$/';
@@ -22,9 +23,14 @@ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 if(isset($_POST['edit'])) {
     
     if(isset($_POST['name'])){
-        echo "123";
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
         $manu->edit_manu($_POST['name'], $image, $id);
         header("Location: $url_path/manufactures.php");
     }
+}
+
+ }else {
+	echo "Bạn không đủ quyền truy cập vào trang này<br>";
+	echo "<a href='http://localhost:82/LapTrinhWeb1/Nhom4'> Click để về lại trang chủ</a>";
+	exit();
 }

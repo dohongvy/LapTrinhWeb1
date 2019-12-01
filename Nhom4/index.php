@@ -1,9 +1,18 @@
 <?php
-require "header.php";
-?>
-      
-    <!--content-->
+     require "header.php";
     
+        if( $_SESSION['type'] == 1){
+            header("Location: http://localhost:82/LapTrinhWeb1/Nhom4/mobileadmin/");
+        }else{
+            if( isset( $_SESSION['session1'] ) )
+            {
+            echo 'Tên đăng nhập Là: ' . $_SESSION['session1'];
+            ?>
+<a href="http://localhost:82/LapTrinhWeb1/Nhom4/logout.php">Logout</a>
+<?php
+           
+        ?>
+<!--content-->
     <div class="content">
         <h1>New Collections</h1>
         <div class="container">
@@ -70,6 +79,18 @@ require "header.php";
     echo $phanTrang;
     ?>
     </div>
-    <?php
-require "footer.php";
-?>
+<?php
+        require "footer.php";
+
+            }
+            else{
+                    ?>
+<script language="javascript">
+    alert("Bạn chưa đăng nhập");
+</script>
+<?php
+                    header("Location: http://localhost:82/LapTrinhWeb1/Nhom4/login.php");
+                }
+                } 
+            
+            

@@ -1,6 +1,13 @@
+<?php
+require "../config/database.php";
+require "../models/Db.php";
+require "../models/products.php";
+require "../models/manufactures.php";
+session_start();
+if ($_SESSION['type'] == 1) {
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<title>Mobile Admin</title>
 	<meta charset="UTF-8" />
@@ -151,3 +158,8 @@
 </body>
 
 </html>
+<?php }else {
+	echo "Bạn không đủ quyền truy cập vào trang này<br>";
+	echo "<a href='http://localhost:82/LapTrinhWeb1/Nhom4'> Click để về lại trang chủ</a>";
+	exit();
+} ?>

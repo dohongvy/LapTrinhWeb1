@@ -2,6 +2,8 @@
 require "../config/database.php";
 require "../models/Db.php";
 require "../models/user.php";
+session_start();
+if ($_SESSION['type'] == 1) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +101,7 @@ require "../models/user.php";
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="widget-box">
-						<div class="widget-title"> <span class="icon"><a href="form_manufacture.php"><i
+						<div class="widget-title"> <span class="icon"><a href="add_user.php"><i
 										class="icon-plus"></i></a></span>
 							<h5>Products</h5>
 						</div>
@@ -109,9 +111,10 @@ require "../models/user.php";
 									<tr>
 										<th>ID</th>
 										<th>Username</th>
+										<th>password</th>
 										<th>Name</th>
 										<th>Type</th>
-										<th>Action</th>
+										
 									</tr>
 								</thead>
 								<?php
@@ -123,13 +126,14 @@ require "../models/user.php";
 									<tr class="">
 										<td><?php echo $value['id'] ?></td>
 										<td><?php echo $value['username'] ?></td>
+										<td><?php echo $value['password'] ?></td>
 										<td><?php echo $value['first_name'] ." ". $value['last_name']?></td>
 										<td><?php echo $value['type'] ?></td>
 
 										<td>
-											<a href="edit_manu.php?id=<?php echo $value['manu_ID'] ?>"
+											<a href="edit_user.php?id=<?php echo $value['id'] ?>"
 												class="btn btn-success btn-mini">Edit</a>
-											<a href="delete_manu.php?id=<?php echo $value['manu_ID'] ?>"
+											<a href="delete_user.php?id=<?php echo $value['id'] ?>"
 												class="btn btn-danger btn-mini">Delete</a>
 										</td>
 									</tr>
@@ -160,3 +164,8 @@ require "../models/user.php";
 </body>
 
 </html>
+<?php }else {
+	echo "Bạn không đủ quyền truy cập vào trang này<br>";
+	echo "<a href='http://localhost:82/LapTrinhWeb1/Nhom4'> Click để về lại trang chủ</a>";
+	exit();
+} ?>

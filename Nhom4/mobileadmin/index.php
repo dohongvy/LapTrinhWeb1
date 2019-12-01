@@ -3,7 +3,9 @@ require "../config/database.php";
 require "../models/Db.php";
 require "../models/products.php";
 require "../models/manufactures.php";
-
+require "../models/user.php";
+session_start();
+if ($_SESSION['type'] == 1) {
 ?>
 
 <!DOCTYPE html>
@@ -185,3 +187,8 @@ require "../models/manufactures.php";
 </body>
 
 </html>
+<?php }else {
+	echo "Bạn không đủ quyền truy cập vào trang này<br>";
+	echo "<a href='http://localhost:82/LapTrinhWeb1/Nhom4'> Click để về lại trang chủ</a>";
+	exit();
+} ?>
