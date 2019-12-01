@@ -3,7 +3,9 @@ require "../config/database.php";
 require "../models/Db.php";
 require "../models/products.php";
 require "../models/manufactures.php";
-
+require "../models/user.php";
+session_start();
+if ($_SESSION['type'] == 1) {
 ?>
 
 <!DOCTYPE html>
@@ -136,6 +138,8 @@ require "../models/manufactures.php";
 								<?php
 							$products = new Products;
 							$getAllProducts = $products->getAllProducts();
+							// var_dump($getAllProducts[0] ["description"]);
+							// substr($value['description'],0,50)
 							foreach($getAllProducts as $key=>$value){
 							?>
 								<tbody>
@@ -145,7 +149,7 @@ require "../models/manufactures.php";
 										<td><?php echo $value['name'] ?></td>
 										<td><?php echo $value['type_name'] ?></td>
 										<td><?php echo $value['manu_name'] ?></td>
-										<td><?php echo substr($value['description'],0,50) ?></td>
+										<td style="width: 40%;"><?php echo $value['description'] ?></td>
 										<td><?php echo $value['price'] ?></td>
 										<td>
 											<a href="edit_product.php?id=<?php echo $value['ID'] ?>"
@@ -185,3 +189,8 @@ require "../models/manufactures.php";
 </body>
 
 </html>
+<?php }else {
+	echo "Bạn không đủ quyền truy cập vào trang này<br>";
+	echo "<a href='http://localhost:82/LapTrinhWeb1/Nhom4'> Click để về lại trang chủ</a>";
+	exit();
+} ?>

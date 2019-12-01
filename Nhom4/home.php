@@ -1,17 +1,19 @@
 <?php
-     require "header.php";
-    
-        if( $_SESSION['type'] == 1){
+     if( $_SESSION['type'] == 1){
             header("Location: http://localhost:82/LapTrinhWeb1/Nhom4/mobileadmin/");
         }else{
             if( isset( $_SESSION['session1'] ) )
             {
             echo 'Tên đăng nhập Là: ' . $_SESSION['session1'];
-            ?>
-<a href="http://localhost:82/LapTrinhWeb1/Nhom4/logout.php">Logout</a>
-<?php
-           
+        if($_SESSION['success'] == 1){
+            echo "<script>alert('Mua thành công')</script>";
+            unset($_SESSION['success']);
+        }   
         ?>
+<a href="http://localhost:82/LapTrinhWeb1/Nhom4/logout.php">Logout</a>
+<?php 
+require "header.php";
+?>
 <!--content-->
 <div class="content">
     <h1>New Collections</h1>
@@ -56,17 +58,9 @@
 </div>
 <!--end content-->
 <?php
-        require "footer.php";
-
-            }
-            else{
-                    ?>
-<script language="javascript">
-    alert("Bạn chưa đăng nhập");
-</script>
-<?php
-                    header("Location: http://localhost:82/LapTrinhWeb1/Nhom4/login.php");
-                }
-                } 
+    require "footer.php";
+    }
+}
+            
             
             

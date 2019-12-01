@@ -2,6 +2,9 @@
 require "../config/database.php";
 require "../models/Db.php";
 require "../models/protypes.php";
+require "../models/user.php";
+session_start();
+if ($_SESSION['type'] == 1) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,7 +95,7 @@ require "../models/protypes.php";
 		<div id="content-header">
 			<div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom current"><i
 						class="icon-home"></i> Home</a></div>
-			<h1>Manage Producer</h1>
+			<h1>Manage Protype</h1>
 		</div>
 		<div class="container-fluid">
 			<hr>
@@ -159,3 +162,8 @@ require "../models/protypes.php";
 </body>
 
 </html>
+<?php }else {
+	echo "Bạn không đủ quyền truy cập vào trang này<br>";
+	echo "<a href='http://localhost:82/LapTrinhWeb1/Nhom4'> Click để về lại trang chủ</a>";
+	exit();
+} ?>

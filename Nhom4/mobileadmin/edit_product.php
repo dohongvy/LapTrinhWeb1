@@ -4,6 +4,9 @@ require "../models/Db.php";
 require "../models/products.php";
 require "../models/protypes.php";
 require "../models/manufactures.php";
+require "../models/user.php";
+session_start();
+if ($_SESSION['type'] == 1) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,12 +116,12 @@ require "../models/manufactures.php";
                     //var_dump($getProductById);
                     foreach($getProductById as $key=>$value){
                		 ?>
-							<form action="xl_editProduct.php?id=<?php echo $id ?>" method="post" class="form-horizontal"
+							<form id = "formProduct" action="xl_editProduct.php?id=<?php echo $id ?>" method="post" class="form-horizontal"
 								enctype="multipart/form-data">
 								<div class="control-group">
 									<label class="control-label">Name :</label>
 									<div class="controls">
-										<input type="text" class="span11" value="<?php echo $value['name'] ?>"
+										<input id="name" type="text" class="span11" value="<?php echo $value['name'] ?>"
 											name="name" />
 									</div>
 								</div>
@@ -191,7 +194,7 @@ require "../models/manufactures.php";
 										<label class="control-label">Descriptphpion</label>
 
 										<div class="controls">
-											<textarea class="span11"
+											<textarea id="description" class="span11"
 												name="description"><?php echo $value['description']?></textarea>
 										</div>
 
@@ -200,14 +203,14 @@ require "../models/manufactures.php";
 											<label class="control-label">Price :</label>
 
 											<div class="controls">
-												<input type="text" class="span11" value="<?php echo $value['price']?>"
+												<input id="price" type="text" class="span11" value="<?php echo $value['price']?>"
 													name="price" /> *
 											</div>
 
 										</div>
 
 										<div class="form-actions">
-											<button type="submit" name="edit" class="btn btn-success">Edit</button>
+										<input id = "btnAddProduct" type="button" value="Edit" class="btn btn-success">
 										</div>
 									</div>
 									<?php } ?>
@@ -234,6 +237,12 @@ require "../models/manufactures.php";
 	<script src="public/js/jquery.dataTables.min.js"></script>
 	<script src="public/js/matrix.js"></script>
 	<script src="public/js/matrix.tables.js"></script>
+	<script src="public/js/admin.js"></script>
 </body>
 
 </html>
+<?php }else {
+	echo "Bạn không đủ quyền truy cập vào trang này<br>";
+	echo "<a href='http://localhost:82/LapTrinhWeb1/Nhom4'> Click để về lại trang chủ</a>";
+	exit();
+} ?>
